@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -20,6 +21,15 @@ export default function Navbar() {
             </a>{" "}
             {/* Updated Link */}
           </li>
+          <li className="nav-item">
+    <Link className="nav-link" to="/app/search">Search</Link>
+</li>
+  <li className="nav-item">
+    <Link className="nav-link" to="/app/login">Login</Link>
+</li> 
+ <li className="nav-item">
+    <Link className="nav-link" to="/app/register">Register</Link>
+</li>
         </ul>
       </div>
     </nav>
