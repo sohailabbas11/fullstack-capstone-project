@@ -5,7 +5,6 @@ const router = express.Router();
 const connectToDatabase = require("../models/db");
 const logger = require("../logger");
 
-// Get all gifts
 router.get("/", async (req, res, next) => {
   logger.info("/ called");
   try {
@@ -20,7 +19,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// Get a single gift by ID
 router.get("/:id", async (req, res, next) => {
   try {
     const db = await connectToDatabase();
@@ -38,7 +36,6 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// Add a new gift
 router.post("/", async (req, res, next) => {
   try {
     const db = await connectToDatabase();
