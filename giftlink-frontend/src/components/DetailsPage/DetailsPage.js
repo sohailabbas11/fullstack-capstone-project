@@ -35,17 +35,14 @@ function DetailsPage() {
 
         fetchGift();
 
-        // Task 3: Scroll to top on component mount
         window.scrollTo(0, 0);
 
     }, [productId, navigate]);
 
     const handleBackClick = () => {
-        // Task 4: Handle back click
         navigate(-1);
     };
 
-    //The comments have been hardcoded for this project.
     const comments = [
         {
             author: "John Doe",
@@ -83,13 +80,11 @@ function DetailsPage() {
                 <div className="card-body">
                     <div className="image-placeholder-large">
                         {gift.image ? (
-                            // Task 5: Display gift image
                             <img src={gift.image} alt={gift.name} className="product-image-large" />
                         ) : (
                             <div className="no-image-available-large">No Image Available</div>
                         )}
                     </div>
-                    {/* Task 6: Display gift details */}
                     <p><strong>Category:</strong> 
                         {gift.category}
                     </p>
@@ -109,7 +104,6 @@ function DetailsPage() {
             </div>
             <div className="comments-section mt-4">
                 <h3 className="mb-3">Comments</h3>
-                {/* Task 7: Render comments section */}
                 {comments.map((comment, index) => (
                     <div key={index} className="card mb-3">
                         <div className="card-body">
