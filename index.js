@@ -51,15 +51,15 @@ const generateUser = () => ({
 
 // === Step 1: Write Users to .ndjson file in batches ===
 const writeUsersToNDJSON = async () => {
-  const totalUsers = 1000;
-  const batchSize = 10;
+  const totalUsers = 1000000;
+  const batchSize = 100000;
 
   const stream = fs.createWriteStream(ndjsonPath);
   for (let i = 0; i < totalUsers; i++) {
     const user = generateUser();
     stream.write(JSON.stringify(user) + '\n');
 
-    if ((i + 1) % batchSize === 0) {
+    if ((i + 1) % 100000 === 0) {
       console.log(`✅ Wrote batch: ${(i + 1) / batchSize}`);
       logSystemStats(`After writing batch ${(i + 1) / batchSize}`);
       await new Promise(resolve => setTimeout(resolve, 500)); // simulate delay
@@ -99,7 +99,7 @@ const convertNDJSONToXLSX = async () => {
     worksheet.addRow(user).commit();
     rowCount++;
 
-    if (rowCount % 100 === 0) {
+    if (rowCount % 100000 === 0) {
       console.log(`📊 Written Excel rows: ${rowCount}`);
       logSystemStats(`Excel Rows: ${rowCount}`);
     }
@@ -156,3 +156,4 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`🚀 App listening at http://localhost:${port}`);
 });
+
